@@ -11,14 +11,14 @@ def index(request):
     return render(
         request,
         'blog/index.html',
-        { #context
+        {
             'posts': posts,
         }
     )
 
 def single_post_page(request, post_num):
 
-    post = Post.objects.get(post_num = post_num)
+    post = Post.objects.get(post_num=post_num)
 
     return render(
         request,

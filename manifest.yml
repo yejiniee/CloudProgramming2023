@@ -1,8 +1,8 @@
 ---
 applications:
 - name: djangoblog-33
-  buildpack: paketo-community/python
+  buildpack: paketo-buildpacks/python
   memory: 512M
   instances: 1
-  command: waitress-serve --port=8080 django_project.wsgi:application
+  command: waitress-serve --port=8081 django_project.wsgi:application
 

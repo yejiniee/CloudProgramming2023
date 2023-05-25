@@ -25,7 +25,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
         return context
 
-class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class PostCreate(LoginRequiredMixin, CreateView): #UserPassesTestMixin
     model = Post
     fields = ['title', 'content', 'head_image',  'file_upload', 'category', 'tag']
 
@@ -34,7 +34,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         current_user = self.request.user
-        if current_user.is_authenticated and (current_user.is_staff or current_user.is_superuser):
+        if current_user.is_authenticated :
             form.instance.author = current_user
             return super(PostCreate, self).form_valid(form)
         else:

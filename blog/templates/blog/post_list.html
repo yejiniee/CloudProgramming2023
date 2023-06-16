@@ -3,10 +3,10 @@
 {% block main_area %}
 
     {% if user.is_authenticated %}
-        {% if user.is_superuser or user.is_staff %}
+
             <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button"><i
                     class="fas fa-pen"></i>&nbsp;문의하기 </a>
-        {% endif %}
+
     {% endif %}
     <h1>문의글 {% if category %}- {{ category }}
     {% endif %}

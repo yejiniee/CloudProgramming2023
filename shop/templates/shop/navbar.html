@@ -12,6 +12,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/blog/">문의하기</a>
                 </li>
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser or user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/product/new/">상품등록</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
             </ul>
             <ul class="navbar-nav ">
                 {% if user.is_authenticated %}

@@ -56,18 +56,6 @@ INSTALLED_APPS = [
 
 
 ]
-'''
-#채팅을 위해 추가
-ASGI_APPLICATION = 'django_project.asgi.application'
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
-'''
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [

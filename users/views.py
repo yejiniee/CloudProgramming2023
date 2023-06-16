@@ -2,14 +2,19 @@ from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.views.generic import FormView
 
+from django.contrib.auth.models import User
 from users.forms import RegisterForm, LoginForm
-from users.models import Users
+from users.models import Users, Profile
 from django.shortcuts import render
 
 def home(request):
     return render(request, 'users/home.html', {'user' : request.session.get('user')})
-    #return render(request, 'shop/index.html'
 
+'''
+def profile(request):
+    return render(request, 'users/base2.html', {
+    })
+'''
 
 
 '''

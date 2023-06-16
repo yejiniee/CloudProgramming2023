@@ -11,12 +11,13 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('shop/', include('shop.urls')),
     path('', include('shop.urls')),
-    #path('', views.home),
-    path('chat/', include('chat.urls')),
+    #path('profile/', views.profile),
     path('users/', include('users.urls')),
     path('product/', include('product.urls')),
     path('order/', include('order.urls')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

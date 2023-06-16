@@ -14,11 +14,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'startbootstrap-shop-homepage-gh-pages/css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     </head>
     <body>
-        {%  include 'shop/navbar.html' %}
-        {% include 'shop/category.html' %}
+
+
+
         {% include 'product/product_list.html' %}
+
 
 
         <!-- Bootstrap core JS-->

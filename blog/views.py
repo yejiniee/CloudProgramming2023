@@ -3,7 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .forms import CommentForm
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Comment
+
 
 # Create your views here.
 
@@ -27,7 +28,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
 class PostCreate(LoginRequiredMixin, CreateView): #UserPassesTestMixin
     model = Post
-    fields = ['title', 'content', 'head_image',  'file_upload', 'category', 'tag']
+    fields = ['title', 'category', 'content', 'head_image',  'file_upload',  'tag']
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -67,21 +68,6 @@ class PostDetail(DetailView):
         context['comment_form'] = CommentForm
         return context
 
-'''
-def single_post_page(request, post_num):
-
-    post = Post.objects.get(pk=post_num)
-
-    return render(
-        request,
-        'blog/post_detail.html',
-        {
-            'post': post,
-        }
-    )
-'''
-
-
 def categories_page(request, slug):
 
     if slug == 'no-category':
@@ -115,6 +101,15 @@ def tag_page(request, slug):
 
     return render(request, 'blog/post_list.html', context)
 
+'''
+def search(request):
+        if request.method == 'POST':
+            searched = request.POST['searched']
+            post_list = Post.objects.filter(title__contains=searched)
+            return render(request, 'blog/post_list.html', {'searched': searched, 'post_list': post_list})
+        else:
+            return render(request, 'blog/post_list.html', {})
+'''
 
 def add_comment(request, pk):
     if not request.user.is_authenticated:
@@ -129,3 +124,15 @@ def add_comment(request, pk):
         comment_temp.save()
 
         return redirect(post.get_absolute_url())
+
+'''
+def update_comment(request, com_id, pk):
+    my_com = Comment.objects.get(id=com_id)
+    com_form = CommentForm(instance=my_com)
+    if request.method == 'POST':
+        update_form = CommentForm(request.POST, instance=my_com)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect('post_detail', pk)
+    return render(request, 'post_detail.html', {'com_form': com_form})
+'''

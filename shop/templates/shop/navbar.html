@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/product">SHOP</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/about_me/">내정보</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/">문의하기</a>
+                </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ">
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -34,13 +34,12 @@
                 {% endif %}
             </ul>
         </div>
-
+        <!--검색창-->
         <form class="d-flex" method="POST" action="{% url 'search' %}">
             {% csrf_token %}
             <input class="form-control me-2" type="search" placeholder="Search" name="searched" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"> Search </button>
         </form>
-
         <!--장바구니-->
         <form class="d-flex">
             <button class="btn btn-outline-dark" type="submit">
@@ -49,7 +48,6 @@
                 <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
         </form>
-
     </div>
 
     <!-- Modal -->

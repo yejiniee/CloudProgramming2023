@@ -14,20 +14,10 @@
     {% include 'shop/navbar.html' %}
         <div class="container">
             <section>
-            <!--검색결과-->
-                {% block searched_product %}
+                {% block contents %}
                 {% endblock %}
             </section>
 
-
-            {% block register %}
-            {% endblock %}
-
-            {% block detail %}
-            {% endblock %}
-
-        {% block contents %}
-        {% endblock %}
         </div>
     </body>
 </html>

@@ -2,15 +2,17 @@
 
 {% load static %}
 {% load humanize %}
-{% block searched_product %}
+<!--searched_product-->
+{% block contents %}
 <!-- Section-->
-{% if product_list %}
+
 
 <section class="py-5">
 
             <div class="container px-4 px-lg-5 mt-5">
-
+            {% if product_list %}
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
                     {% for product in product_list %}
                     <div class="col mb-5">
 
@@ -39,11 +41,14 @@
                         </div>
                     </div>
                     {% endfor %}
-                </div>
 
+                </div>
+            {% else %}
+                <h1>검색결과가 존재하지 않습니다</h1>
+            {% endif %}
             </div>
 
         </section>
-{% endif %}
+
 
 {% endblock %}

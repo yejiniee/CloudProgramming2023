@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -47,6 +47,11 @@ class PostCreate(LoginRequiredMixin, CreateView): #UserPassesTestMixin
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
         return context
 
+def delete_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    if post.author == request.user:
+        post.delete()
+    return redirect('/') #redirect('posts:index')
 
 class PostList(ListView):
     model = Post

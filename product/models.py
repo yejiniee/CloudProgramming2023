@@ -31,4 +31,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return f'/product/{self.pk}/'
 
+    class Meta:
+        db_table = 'shop_product'
+        verbose_name = '상품'
+        verbose_name_plural = '상품'
+
 

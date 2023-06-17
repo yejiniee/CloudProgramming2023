@@ -3,7 +3,6 @@ from django_summernote.widgets import SummernoteWidget
 
 from .models import Product
 
-
 class RegisterForm(forms.Form):
     '''
     class Meta:
@@ -48,12 +47,4 @@ class RegisterForm(forms.Form):
                 stock=stock
             )
             product.save()
-            '''
-        #삭제
-        if not (name and price and stock and description):
-            self.add_error('name', "값이 없습니다.")
-            self.add_error('price', "값이 없습니다.")
-            self.add_error('stock', "값이 없습니다.")
-            self.add_error('description', "값이 없습니다.")
-            '''
 

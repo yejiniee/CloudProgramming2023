@@ -1,8 +1,9 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.db import transaction
 
 from .models import Order
-from users.models import Users
+#from users.models import Users
 from product.models import Product
 
 
@@ -24,7 +25,8 @@ class OrderForm(forms.Form):
         cleaned_data = super().clean()
         quantity = cleaned_data.get('quantity')
         product = cleaned_data.get('product')
-        fcuser = self.request.session.get('user')
+        fcuser = self.request.user
+
 
         if quantity and product and fcuser:
             with transaction.atomic():
@@ -32,17 +34,23 @@ class OrderForm(forms.Form):
                 order = Order(
                     quantity=quantity,
                     product=Product.objects.get(pk=product),
-                    fcuser=Users.objects.get(email=fcuser)
+                    fcuser=User.objects.get(username=fcuser)
                 )
-                order.save()
-                # 수량만큼 재고에서 차감
-                prod.stock -= quantity
-                prod.save()
 
-        else:
+                # 수량만큼 재고에서 차감
+                if (prod.stock>=order.quantity):
+                    prod.stock -= quantity
+                    prod.save()
+                    order.save()
+
+
+
+
+        else: #계속 실패해서 여기로 돌아옴...환장
             self.product = product
             self.add_error('quantity', '값이 없습니다')
             self.add_error('product', '값이 없습니다')
+            #print(self.request.session)
 '''
     if not (quantity and product and user):
         self.add_error('quantity', "수량이 없습니다.")

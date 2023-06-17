@@ -23,6 +23,7 @@ class ProductRegister(FormView):
     form_class = RegisterForm
     success_url = '/'
 
+'''
     def form_valid(self, form):
         product = Product(
             name=form.data.get('name'),
@@ -32,7 +33,7 @@ class ProductRegister(FormView):
         )
         product.save()
         return super().form_valid(form)
-
+'''
 '''
     def get_context_data(self, **kwargs):
         context = super(ProductRegister, self).get_context_data()

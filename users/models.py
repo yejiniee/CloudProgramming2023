@@ -14,7 +14,7 @@ class Users(models.Model):
         return self.email
 
     class Meta:
-        db_table = "Shoppingmall_users"
+        db_table = "shop_users"
         verbose_name = "사용자"
         verbose_name_plural = "사용자"
 

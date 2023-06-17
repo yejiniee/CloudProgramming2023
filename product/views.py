@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 
 from order.forms import OrderForm
@@ -59,22 +59,7 @@ class ProductDetail(DetailView):
         context['form'] = OrderForm(self.request)
         return context
 
-'''
-def categories_page(request, slug):
-
-    if slug == 'no-category':
-        category = '미분류'
-        product_list = Product.objects.filter(category=None)
-    else:
-        category = ProductCategory.objects.get(slug=slug)
-        product_list = Product.objects.filter(category=category)
-
-    context = {
-        'categories' : ProductCategory.objects.all(),
-        'category_less_post_count' : Product.objects.filter(category=None).count(),
-        'category' : category,
-        'post_list' : product_list,
-    }
-
-    return render(request, 'product/product_list.html', context)
-'''
+def delete_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    product.delete()
+    return redirect('/')

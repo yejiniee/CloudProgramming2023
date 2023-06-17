@@ -44,7 +44,7 @@
 
         <!-- Date/Time -->
         {% if user.is_authenticated and user == post.author %}
-            <a class="btn btn-info btn-sm float-right" href="/blog/update_post/{{ post.pk }}" role="button"><i class="fas fa-pen"></i>&nbsp;삭제 </a>
+            <a class="btn btn-info btn-sm float-right" href="/blog/update_post/{{ post.pk }}" role="button"><i class="fas fa-pen"></i>&nbsp;수정 </a>
             <div class="delete">
 	            <p><a href="{% url 'delete_post' post.id %}">삭제</a></p>
             </div>

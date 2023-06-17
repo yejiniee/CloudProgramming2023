@@ -51,7 +51,7 @@ def delete_post(request, pk):
     post = Post.objects.get(pk=pk)
     if post.author == request.user:
         post.delete()
-    return redirect('/') #redirect('posts:index')
+    return redirect('/')
 
 class PostList(ListView):
     model = Post

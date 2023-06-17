@@ -27,7 +27,7 @@
                                 value="{% if field.name == 'product' %}{{ product.id }}{% endif %}" />
                         </div>
                         {% if field.errors %}
-                        <span style="color: red;">{{ field.errors }}</span>
+                        <span style="color: red;">{{ field.errors }}!</span>
                         {% endif %}
                         {% endfor %}
                         <button type="submit" class="btn btn-primary">주문하기</button>

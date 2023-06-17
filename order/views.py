@@ -1,6 +1,6 @@
 from django.db import transaction
 from django.shortcuts import redirect
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 
 from order.forms import OrderForm
 from order.models import Order
@@ -38,3 +38,14 @@ class OrderCreate(FormView):
             'request': self.request
         })
         return kw
+
+# 주문정보 조회
+class OrderList(ListView):
+    model = Order
+    template_name = 'order/order.html'
+    context_object_name = 'order_list'
+
+    def get_queryset(self, **kwargs):
+        queryset = Order.objects.filter(
+            fcuser__username=self.request.user)
+        return queryset

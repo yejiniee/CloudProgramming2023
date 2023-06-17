@@ -27,7 +27,6 @@ class OrderForm(forms.Form):
         product = cleaned_data.get('product')
         fcuser = self.request.user
 
-
         if quantity and product and fcuser:
             with transaction.atomic():
                 prod = Product.objects.get(pk=product)
@@ -42,15 +41,14 @@ class OrderForm(forms.Form):
                     prod.stock -= quantity
                     prod.save()
                     order.save()
+                else:
+                    self.add_error('quantity', "수량이 없습니다.")
 
-
-
-
-        else: #계속 실패해서 여기로 돌아옴...환장
+        else:
             self.product = product
             self.add_error('quantity', '값이 없습니다')
             self.add_error('product', '값이 없습니다')
-            #print(self.request.session)
+
 '''
     if not (quantity and product and user):
         self.add_error('quantity', "수량이 없습니다.")

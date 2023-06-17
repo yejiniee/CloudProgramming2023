@@ -1,8 +1,8 @@
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %} Create post - blog {% endblock %}
-{% block main_area %}
-    <h1>블로그 새 글 작성</h1>
+
+{% block contents %}
+    <h1>새 문의글 작성</h1>
     <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <table>
             {{ form | crispy }}
@@ -10,7 +10,5 @@
         <button type="submit" class="btn btn-primary float-right">Submit</button>
 
     </form>
-    <p>Preview</p>
-    {{ form.media }}
 
 {% endblock %}

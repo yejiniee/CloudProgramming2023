@@ -1,19 +1,7 @@
 from django import forms
-from django_summernote.widgets import SummernoteWidget
-
 from .models import Product
 
 class RegisterForm(forms.Form):
-    '''
-    class Meta:
-        model=Product
-        fields=('name', 'price', 'description', 'stock', )
-
-        widgets = {
-            'content': SummernoteWidget(),
-        }
-    '''
-
 
     name = forms.CharField(
         error_messages={'required':"상품명을 입력하세요."},

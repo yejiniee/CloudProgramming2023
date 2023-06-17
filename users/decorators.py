@@ -1,3 +1,5 @@
+'''
+
 from django.shortcuts import redirect
 
 from . import admin
@@ -22,3 +24,5 @@ def login_required(func):
             return redirect('/login/')
         return func(request, *args, **kwargs)
     return wrap
+
+'''

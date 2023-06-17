@@ -1,3 +1,4 @@
+'''
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.views.generic import FormView
@@ -5,11 +6,13 @@ from django.views.generic import FormView
 from django.contrib.auth.models import User
 from users.forms import RegisterForm, LoginForm
 from users.models import Users, Profile
+
+
 from django.shortcuts import render
 
 def home(request):
     return render(request, 'users/home.html', {'user' : request.session.get('user')})
-
+'''
 '''
 def profile(request):
     return render(request, 'users/base2.html', {
@@ -45,6 +48,8 @@ def register(request):
         return render(request, 'users/register.html', res_data)
 
 '''
+
+'''
 class RegisterView(FormView):
     template_name = 'users/register.html'
     form_class = RegisterForm
@@ -74,4 +79,4 @@ def logout(request):
         del(request.session['user'])
     return redirect('/')
 
-
+'''

@@ -1,4 +1,3 @@
-import os.path
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -23,7 +22,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name="상품설명")
     stock = models.IntegerField(verbose_name="재고")
     registered_date = models.DateTimeField(verbose_name="등록시간", auto_now_add=True)
-    #category = models.ForeignKey(ProductCategory, null=True, blank=True, on_delete=models.SET_NULL)
+
 
     def __str__(self):
         return f'[{self.pk}] {self.name}'

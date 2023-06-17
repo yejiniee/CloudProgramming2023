@@ -1,4 +1,4 @@
-{% extends 'users/base1.html' %}
+{% extends 'blog/base.html' %}
 
 {% load static %}
 {% load humanize %}
@@ -19,7 +19,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             {% if product.description %}
-                                <img class="img-fluid rounded" src="{{ product.description }}" alt="">
+                                <img class="img-fluid rounded" src="{{ product.description }}"  alt="">
                             {% else %} <!-- Preview Image -->
                                 <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
                             {% endif %}

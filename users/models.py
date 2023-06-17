@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
+from product.models import Product
 
-
+'''
 class Users(models.Model):
     email = models.CharField(verbose_name="이메일", max_length = 128)
     password = models.CharField(max_length = 80, verbose_name = "비밀번호" )
@@ -17,7 +17,7 @@ class Users(models.Model):
         db_table = "shop_users"
         verbose_name = "사용자"
         verbose_name_plural = "사용자"
-
+'''
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db import transaction
 
 from .models import Order
-#from users.models import Users
 from product.models import Product
 
 
@@ -48,9 +47,3 @@ class OrderForm(forms.Form):
             self.product = product
             self.add_error('quantity', '값이 없습니다')
             self.add_error('product', '값이 없습니다')
-
-'''
-    if not (quantity and product and user):
-        self.add_error('quantity', "수량이 없습니다.")
-        self.add_error('product', "상품이 없습니다.")
-'''

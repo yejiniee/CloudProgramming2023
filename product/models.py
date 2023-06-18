@@ -1,20 +1,6 @@
 
 from django.contrib.auth.models import User
 from django.db import models
-'''
-class ProductCategory(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-    slug = models.SlugField(max_length=50, unique=True, allow_unicode=True)
-
-    def get_absolute_url(self):
-        return f'/product/category/{self.slug}/'
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = 'Product_Categories'
-'''
 
 class Product(models.Model):
     name = models.CharField(max_length = 32, verbose_name="상품명")

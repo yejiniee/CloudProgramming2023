@@ -43,7 +43,9 @@
                                     <span style="color: red;">{{ field.errors }}!</span>
                                 {% endif %}
                             {% endfor %}
+                            {% if user.is_authenticated %}
                             <button type="submit" class="btn btn-primary">주문하기</button>
+                            {% endif %}
                         </form>
                     </li>
                     <li class="list-group-item">가격 : {{ product.price|intcomma }} 원</li>

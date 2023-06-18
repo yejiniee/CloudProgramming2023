@@ -47,7 +47,6 @@
                         </form>
                     </li>
                     <li class="list-group-item">가격 : {{ product.price|intcomma }} 원</li>
-                    <li class="list-group-item">등록날짜 : {{ product.register_date|date:'Y-m-d H:i' }}</li>
                     <!-- description은 태그이기 때문에 필터로 |safe를 해주면 html 태그로 만들어준다! -->
                     <!-- 재고 출력 -->
                     <li class="list-group-item">재고 : {{ product.stock|intcomma }} 개</li>

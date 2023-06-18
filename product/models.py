@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
-
+'''
 class ProductCategory(models.Model):
     name = models.CharField(max_length=20, unique=True)
     slug = models.SlugField(max_length=50, unique=True, allow_unicode=True)
@@ -14,12 +14,13 @@ class ProductCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'Product_Categories'
-
+'''
 
 class Product(models.Model):
     name = models.CharField(max_length = 32, verbose_name="상품명")
     price = models.IntegerField(verbose_name = "상품가격")
     description = models.TextField(verbose_name="상품설명")
+    head_image = models.ImageField(verbose_name="썸네일", upload_to='product/images/%Y/%m/%d/')
     stock = models.IntegerField(verbose_name="재고")
     registered_date = models.DateTimeField(verbose_name="등록시간", auto_now_add=True)
 

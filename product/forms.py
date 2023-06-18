@@ -19,6 +19,10 @@ class RegisterForm(forms.Form):
         error_messages={'required':"상품 설명을 입력하세요"},
         label = "상품 설명"
     )
+    head_image = forms.ImageField(
+        error_messages={'required': "썸네일 이미지를 입력하세요"},
+        label="썸네일"
+    )
 
     def clean(self):
         cleaned_data = super().clean()
@@ -26,13 +30,16 @@ class RegisterForm(forms.Form):
         price = cleaned_data.get('price')
         stock = cleaned_data.get('stock')
         description = cleaned_data.get('description')
+        head_image = cleaned_data.get('head_image')
         
-        if name and price and description and stock:
+        if name and price and description and stock and head_image:
             product = Product(
                 name=name,
                 price=price,
+                stock=stock,
                 description=description,
-                stock=stock
+                head_image=head_image,
+
             )
             product.save()
 

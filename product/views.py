@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 
 from order.forms import OrderForm
-from .models import Product, ProductCategory
+from .models import Product
 from .forms import RegisterForm
 from django.views.generic.edit import FormView
 

@@ -18,8 +18,11 @@
 
                         <div class="card h-100">
                             <!-- Product image-->
-                            {% if product.description %}
-                                <img class="img-fluid rounded" src="{{ product.description }}"  alt="">
+                            {% if product.head_image %}
+                                <img class="img-fluid rounded" src="{{ product.head_image.url }}" style="width: 100%;
+    height: 150px;
+    overflow: hidden;
+    object-fit: cover;" alt="">
                             {% else %} <!-- Preview Image -->
                                 <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
                             {% endif %}
